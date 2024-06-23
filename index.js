@@ -16,8 +16,13 @@ app.use(express.static("public"));
 
 /////// Get Routes of Weather//////
 
-app.get('/weather', async (req, res)=>{
-    
+app.get('/', async (req, res)=>{
+    const City = req.body
+    try {
+        const result = await axios.post(API_URL + `weather?q=${City}&appid=${OPENWEATHERMAP_API_KEY}`)
+    } catch (error) {
+        
+    }
 })
 
 
