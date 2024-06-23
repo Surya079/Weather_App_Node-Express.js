@@ -21,7 +21,10 @@
                     <div class="row px-3 mt-3 mb-3">
                         <h1 class="large-font mr-3">26&#176;</h1>
                         <div class="d-flex flex-column mr-3">
-                            <h2 class="mt-3 mb-0">London</h2>
+                            <% if (locals.content) { %>
+                             <h2 class="mt-3 mb-0"><%= content. %></h2>
+                            <% } %>
+                            
                             <small>10:36 - Tuesday, 22 Oct '19</small>
                         </div>
                         <div class="d-flex flex-column text-center">
@@ -32,9 +35,9 @@
                 </div>
                 <div class="card2 col-lg-4 col-md-5">
                     <div class="row px-3">
-                        <form action="" method="get">
-                            <input type="text" name="city" placeholder="Another location" class="mb-5">
-                            <button class=" fa-search mb-5 mr-0 text-center"><i class='bx bx-search'></i></button>
+                        <form action="/" method="POST">
+                            <input type="text"  name="City" placeholder="Another location" class="mb-5">
+                            <button class=" fa-search mb-5 mr-0 text-center" type="submit"><i class='bx bx-search'></i></button>
                         </form>
                     </div>
                     <div class="mr-5">
