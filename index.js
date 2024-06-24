@@ -28,9 +28,26 @@ app.get('/', (req, res)=>{
 })
 app.post('/',async (req, res)=>{
     const City = req.body["City"]
+    const curTime = new Date().toTimeString().split(' ')[0];;
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var d = new Date();
+    var date = new Date().toLocaleDateString();
+    var dayName = days[d.getDay()];
+    // console.log(date);
    try {
     const result = await axios.get(API_URL + `weather?q=${City}&appid=${OPENWEATHERMAP_API_KEY}&units=metric`);
-    res.render("index.ejs", { content : JSON.stringify(result.data) });
+    const city = JSON.stringify(result.data.name);
+    const temp = JSON.stringify(result.data.main.temp);
+    var weather = JSON.stringify(result.data.weather[0].main)
+   
+    res.render("index.ejs", { 
+        dayName,
+        date,
+        curTime,
+        city,
+        temp,
+        weather
+     });
 } catch (error) {
     res.render("index.ejs", { content : error.message});
    }    
