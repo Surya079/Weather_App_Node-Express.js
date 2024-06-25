@@ -10,6 +10,7 @@ const API_URL = "https://api.openweathermap.org/data/2.5/"
 
 // "weather?q={city name}&appid={API key}"
 
+
 ///// BodyRequest package ///////
 
 app.use(bodyParser.urlencoded({extended : true}));
@@ -39,7 +40,7 @@ app.post('/',async (req, res)=>{
     const city = JSON.stringify(result.data.name);
     const temp = JSON.stringify(result.data.main.temp);
     var weather = JSON.stringify(result.data.weather[0].main)
-   
+   console.log(JSON.stringify(result.data));
     res.render("index.ejs", { 
         dayName,
         date,
@@ -49,7 +50,7 @@ app.post('/',async (req, res)=>{
         weather
      });
 } catch (error) {
-    res.render("index.ejs", { content : error.message});
+    res.render("index.ejs", { content :" no matches that you trying to find..!"});
    }    
     
 })
